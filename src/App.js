@@ -1,17 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import MainContent from './components/MainContent';
+import RegistrationForm from './components/RegistrationForm';
+import StyledButton from './components/StyledButton';
+import TrainingPreferences from './components/TrainingPreferences';
+import ContactInfo from './components/ContactInfo';
 
+
+// Función principal del componente App
 function App() {
+  // Retorna el JSX que define la estructura del componente
   return (
+    // Contenedor principal con la clase CSS "App"
     <div className="App">
-      <Header />
-      <MainContent />
-      <Footer />
+      <ContactInfo />
+      <RegistrationForm />
+      <StyledButton />
+      <TrainingPreferences />
     </div>
   );
 }
 
+// Exporta el componente App como el valor por defecto del módulo
 export default App;

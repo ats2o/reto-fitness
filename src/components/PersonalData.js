@@ -1,4 +1,3 @@
-// PersonalData.js
 // Importa React para poder usar JSX
 import React from 'react';
 // Importa useFormik de formik para manejar el formulario
