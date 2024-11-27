@@ -1,8 +1,8 @@
 import './App.css';
 import RegistrationForm from './components/RegistrationForm';
-import StyledButton from './components/StyledButton';
-import TrainingPreferences from './components/TrainingPreferences';
-import ContactInfo from './components/ContactInfo';
+// import StyledButton from './components/StyledButton';
+// import TrainingPreferences from './components/TrainingPreferences';
+// import ContactInfo from './components/ContactInfo';
 
 
 // Función principal del componente App
@@ -11,10 +11,13 @@ function App() {
   return (
     // Contenedor principal con la clase CSS "App"
     <div className="App">
+      {/* <p>Registro de Datos</p>
       <ContactInfo />
+      <p>Contacto</p> */}
       <RegistrationForm />
-      <StyledButton />
-      <TrainingPreferences />
+      {/* <StyledButton />
+      <p>Preferencias de Entrenamiento</p>
+      <TrainingPreferences /> */}
     </div>
   );
 }
