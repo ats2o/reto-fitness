@@ -11,12 +11,12 @@ import '../Estilos.css';
 
 // Define un contenedor estilizado usando styled-components
 const Container = styled.div`
-    padding: 20px;
-    max-width: 600px;
+    padding: 10px;
+    max-width: 500px;
     margin: auto;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
+    border: 3px solid #400040;
+    border-radius: 10px;
+    background-color: #8080c0;
 `;
 
 // Define el componente funcional RegistrationForm
@@ -37,15 +37,15 @@ const RegistrationForm = () => {
         setStep(step - 1);
     };
     // Función para enviar el formulario
-    const submitForm = async () => {
+    const submitForm = async (datos) => {
         try {
             // Realiza una solicitud POST a la API para registrar los datos
-            const response = await fetch('http://localhost:3000', { // Ensure this URL is correct and the server is running
+            const response = await fetch('https://api.fitlife.com/registro', { // Ensure this URL is correct and the server is running
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify(datos),
             });
             // Verifica si la respuesta no es exitosa
             if (!response.ok) {
@@ -58,22 +58,21 @@ const RegistrationForm = () => {
             setMessage('Registro exitoso');
             console.log('Registro exitoso:', result);
         } catch (error) {
-            // Muestra un mensaje de error genérico
-            setMessage('Error al registrar');
-            // Verifica si el error es un TypeError
             if (error.name === 'TypeError') {
-                // Muestra un mensaje específico para errores de red
-                setMessage('Error de red. Por favor, inténtelo de nuevo más tarde.');
-            // } else {
-            //     // Muestra un mensaje para otros tipos de errores
-            //     setMessage('Error en el envío de datos. Por favor, revise los datos ingresados.');
+                setMessage('Network error: Failed to fetch');
+            } else {
+                setMessage('Error al registrar');
             }
-            // Imprime el error en la consola para depuración
+            // setMessage('Error al registrar');
             console.error('Error al enviar los datos:', error);
+            console.error('Detalles del error:', error.message); // Agrega esta línea para más detalles
         }
     };
     // Renderiza el formulario basado en el paso actual
     return (
+        // Contenedor principal del formulario
+        <div className="container">
+        <h1>Registro de Datos</h1>
         <Container>
             {step === 0 && <PersonalData onNext={nextStep} />}
             {step === 1 && (
@@ -98,6 +97,7 @@ const RegistrationForm = () => {
             )}
             {message && <div>{message}</div>}
         </Container>
+        </div>
     );
 };
 
